@@ -1,20 +1,14 @@
-<!--App.vue-->
 <template>
   <div id="app">
-    <p>hello world!!!</p>
-    <img alt="Vue logo" src="@/assets/logo.png" />
+    <router-view />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({
-  name: 'app'
+  name: "app",
 })
-export default class extends Vue {
-  private created() {
-    console.log(12345)
-  }
-}
+export default class extends Vue {}
 </script>
