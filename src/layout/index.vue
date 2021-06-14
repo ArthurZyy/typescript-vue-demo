@@ -1,6 +1,5 @@
 <template>
   <div class="app-wrapper">
-    布局
     <Navbar/>
   </div>
 </template>
