@@ -1,4 +1,4 @@
-import Vue, {DirectiveOptions} from 'vue';
+import Vue, { DirectiveOptions } from 'vue';
 import 'normalize.css';
 import '@/styles/index.scss'
 
@@ -17,7 +17,7 @@ import store from './store';
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI, {
-  i18n: (key: string, value:string) => i18n.t(key, value)
+  i18n: (key: string, value: string) => i18n.t(key, value)
 })
 
 Vue.use(SvgIcon, {
@@ -34,5 +34,6 @@ Vue.use(SvgIcon, {
 new Vue({
   router,
   store,
+  i18n,
   render: (h) => h(App),
 }).$mount('#app');

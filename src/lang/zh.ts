@@ -10,7 +10,9 @@ export default {
   },
   login: {
     mobilePhone: '请输入手机号码',
+    mobilePhoneErr: '请输入手机号码',
     password: '请输入密码',
+    passwordErr: '密码不得少于6位',
     btn: '登录'
   },
   table: {
