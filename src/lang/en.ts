@@ -18,5 +18,8 @@ export default {
   table: {
     payNo: 'payNo',
     remark: 'remark'
+  },
+  lang: {
+    success: 'Switch Language Success'
   }
 }

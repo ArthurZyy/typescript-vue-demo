@@ -18,5 +18,8 @@ export default {
   table: {
     payNo: '流水号',
     remark: '备注及操作'
+  },
+  lang: {
+    success: '切换语言成功'
   }
 }

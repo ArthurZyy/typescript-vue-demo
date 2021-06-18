@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
+    <login-canvas />
     <section>
+      <div>
+        <span>ts demo</span>
+        <lange-select class="set-language" />
+      </div>
       <el-form
         status-icon
         ref="loginForm"
@@ -38,11 +43,17 @@
 
 <script lang="ts">
 import { UserModule } from "@/store/modules/user";
+import LangeSelect from "@/components/LangeSelect/index.vue";
 import { Component, Vue } from "vue-property-decorator";
 import { ElForm } from "_element-ui@2.15.2@element-ui/types/form";
+import LoginCanvas from "./login-canvas.vue";
 
 @Component({
   name: "login",
+  components: {
+    LoginCanvas,
+    LangeSelect,
+  },
 })
 export default class extends Vue {
   private validateMobilePhone = (
@@ -50,7 +61,7 @@ export default class extends Vue {
     value: string,
     callback: Function
   ) => {
-    if (!value.trim()) { 
+    if (!value.trim()) {
       callback(new Error(this.$t("login.mobilePhoneErr").toString()));
     } else {
       callback();
@@ -81,20 +92,76 @@ export default class extends Vue {
 
   private handleLogin() {
     (this.$refs.loginForm as ElForm).validate(async (valid: boolean) => {
-      if(valid){
-        this.loading = true
+      if (valid) {
+        this.loading = true;
         await UserModule.Login({
           ...this.loginForm,
-          router: this.$router
-        })
+          router: this.$router,
+        });
 
-        setTimeout(() =>{
-          this.loading = false
-        }, 0.5 * 1000)
+        setTimeout(() => {
+          this.loading = false;
+        }, 0.5 * 1000);
       } else {
-        return false
+        return false;
       }
-    })
+    });
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.login-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: $loginBg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    >section {
+        position: absolute;
+        background-color: rgba(250, 250, 250, 0.8);
+        border-radius: 5px;
+        >div {
+            width: 300px;
+            position: relative;
+            height: 80px;
+            text-align: center;
+            >span {
+                line-height: 80px;
+                font-size: 30px;
+                color: #000;
+                display: inline-block;
+                text-align: center;
+            }
+            .international {
+                position: absolute;
+                right: 0;
+                top: 33px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+
+        .login-form {
+            padding: 30px 20px 20px 20px;
+            position: relative;
+            width: 300px;
+            max-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            >footer {
+                text-align: center;
+                width: 100%;
+                >button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+</style>
